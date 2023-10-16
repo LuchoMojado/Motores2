@@ -5,6 +5,7 @@ using UnityEngine;
 public class GyroTest : MonoBehaviour
 {
     Gyroscope _gyro;
+    [SerializeField] Camera _camera;
 
     private void Start()
     {
@@ -13,6 +14,6 @@ public class GyroTest : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(_gyro.attitude.z);
+        _camera.transform.rotation = new Quaternion(0, 0, _gyro.attitude.z, 0);
     }
 }
