@@ -7,9 +7,14 @@ public abstract class SteeringAgent : MonoBehaviour
 {
     protected Rigidbody _rb;
 
-    protected Vector3 _velocity;
+    protected Vector3 _velocity = Vector3.zero;
 
     [SerializeField] protected float _maxSpeed, _maxForce, _speed;
+
+    protected virtual void Awake()
+    {
+        _rb = GetComponent<Rigidbody>();
+    }
 
     protected void Move()
     {

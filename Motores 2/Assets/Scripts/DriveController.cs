@@ -8,26 +8,30 @@ public class DriveController : SteeringAgent
 
     [SerializeField] float _turnSensibility, _breakStr;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         _gyro = Input.gyro;
         _gyro.enabled = true;
     }
 
     private void Update()
     {
+        print(_gyro.rotationRate.z);
+        
         if (true/*aprieto el boton de acelerar*/)
         {
-            var dir = transform.forward + new Vector3(-_gyro.rotationRate.z * _turnSensibility, 0);
+            var dir = transform.forward + new Vector3(_gyro.rotationRate.z * _turnSensibility, 0);
             dir.Normalize();
-
+        
             AddForce(CalculateSteering(dir * _speed));
         }
         else if (true/*aprieto el boton de frenar*/)
         {
             AddForce(-transform.forward * _breakStr);
         }
-
+        
         Move();
     }
 }
