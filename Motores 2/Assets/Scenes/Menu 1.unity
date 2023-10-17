@@ -369,7 +369,7 @@ RectTransform:
   m_GameObject: {fileID: 109253029}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.85127556, y: 1.1089, z: 1}
+  m_LocalScale: {x: 0.8461365, y: 1.6692529, z: 1.1591}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 894691720}
@@ -378,7 +378,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 92, y: 15}
+  m_AnchoredPosition: {x: 89.7, y: 20.7}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &109253031
@@ -457,7 +457,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7fb807c6a9cea26448228d7338dcdb17, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f0c204ed512dbcf4cb3a32ec4b42b906, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -466,7 +466,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 5
 --- !u!222 &109253033
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -489,6 +489,8 @@ GameObject:
   - component: {fileID: 150039325}
   - component: {fileID: 150039322}
   - component: {fileID: 150039321}
+  - component: {fileID: 150039328}
+  - component: {fileID: 150039327}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -607,6 +609,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a48aaa56d543d4a4e878b2b5407f4a96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &150039327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150039320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 993ad8b108bfa4c4d8bc302a4f1863a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenu: {fileID: 0}
+  tutorialMenu: {fileID: 0}
+  optionsMenu: {fileID: 0}
+--- !u!114 &150039328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150039320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d684da64867f1dc4dbb8780f89b0c6c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &163525271
@@ -1369,14 +1398,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.53777295, b: 0.23137254, a: 1}
+  m_Color: {r: 0.7516078, g: 0.7239676, b: 0.8207547, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ad10a3edebf46aa4e9c1f61e86a0d74c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 145f7023a9bc3a645bca722ab856841b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1636,7 +1665,7 @@ RectTransform:
   m_GameObject: {fileID: 932015303}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0535339, y: 1.1846378, z: 1}
+  m_LocalScale: {x: 0.8461365, y: 1.669253, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 772130168}
@@ -1645,7 +1674,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 93.2, y: 59.3}
+  m_AnchoredPosition: {x: 93.2, y: 54.8}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &932015305
@@ -1724,7 +1753,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 916f7868f6f817d4c8a899e596430b0b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b3d0430ac71890942bd25a6791077983, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2685,7 +2714,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rat Of The Swamp
+  m_text: 'Drive Rush
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2904,7 +2935,7 @@ MonoBehaviour:
 
     Dante Barassi
 
-    Maximiliano Pereira'
+    Luciano Bernachia'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
