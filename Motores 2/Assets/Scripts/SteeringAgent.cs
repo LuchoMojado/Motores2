@@ -42,5 +42,6 @@ public abstract class SteeringAgent : MonoBehaviour
     {
         _velocity = Vector3.ClampMagnitude(_velocity + force, _maxSpeed);
         _rb.AddForce(_velocity);
+        _rb.velocity = Vector3.ClampMagnitude(_rb.velocity + force, _maxSpeed);
     }
 }
