@@ -10,10 +10,11 @@ public class GyroTest : MonoBehaviour
     private void Start()
     {
         _gyro = Input.gyro;
+        _gyro.enabled = true;
     }
 
     void Update()
     {
-        _camera.transform.rotation = new Quaternion(0, 0, _gyro.attitude.z, 0);
+        _camera.transform.eulerAngles -= new Vector3(0, 0, _gyro.rotationRate.z)*Time.deltaTime*5;
     }
 }
