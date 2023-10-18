@@ -20,13 +20,15 @@ public class OpponentAI : SteeringAgent
     {
         for (int i = 0; i < waypoints.Length; i++)
         {
-            while (Vector3.Distance(transform.position, waypoints[i].position) > 1.5f)
+            Vector3 targetPos = new Vector3(waypoints[i].position.x, transform.position.y, waypoints[i].position.z);
+
+            while (Vector3.Distance(transform.position, targetPos) > 1.5f)
             {
-                AddForce(CalculateSteering(Seek(waypoints[i].position) * _speed));
+                AddForce(Seek(targetPos) * _speed);
                 print(i);
                 yield return null;
             }
         }
     }
 }
-//<>
+//<>new Vector3(waypoints[i].position.x, transform.position.y, waypoints[i].position.z)

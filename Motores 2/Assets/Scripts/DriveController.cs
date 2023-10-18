@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class DriveController : SteeringAgent
 {
@@ -11,7 +12,7 @@ public class DriveController : SteeringAgent
 
     float _currentRotation, _resetCount = 0;
 
-    bool accelerating = false;
+    public bool accelerating = false, breaking = false;
     
     protected override void Awake()
     {
@@ -41,10 +42,14 @@ public class DriveController : SteeringAgent
 
         print(_currentRotation * _turnSensibility);
 
-        /*if (_velocity.sqrMagnitude > 0)
+        if (accelerating)
         {
-            AddForce(transform.right * -_currentRotation * _turnSensibility);
-        }*/
+            Accelerate();
+        }
+        else if (breaking)
+        {
+            Break();
+        }
         
         Move();
     }
@@ -61,6 +66,4 @@ public class DriveController : SteeringAgent
     {
         AddForce(-transform.forward * _breakStr);
     }
-    
-    //<>
 }
