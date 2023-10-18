@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
-    //TP2 Maximiliano Pereira
     public Image mainMenu;
     public Image tutorialMenu;
     public Image optionsMenu;
