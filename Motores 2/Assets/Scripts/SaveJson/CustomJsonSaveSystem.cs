@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class CustomJsonSaveSystem : MonoBehaviour
 {
-    [SerializeField] SaveData saveData = new SaveData();
+    public SaveData saveData = new SaveData();
     string path;
 
     private void Awake()

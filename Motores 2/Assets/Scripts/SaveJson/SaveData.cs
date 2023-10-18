@@ -11,5 +11,5 @@ public class SaveData
     public int _coins = 2;
     public float _record;
     public float _lastTime;
-    public List<string> cars = new List<string>();
+    public List<DriveController> cars = new List<DriveController>();
 }
