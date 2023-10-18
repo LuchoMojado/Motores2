@@ -16,7 +16,7 @@ public abstract class SteeringAgent : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
     }
 
-    protected void Move()
+    protected virtual void Move()
     {
         if (_velocity != Vector3.zero) transform.forward = _velocity;
     }

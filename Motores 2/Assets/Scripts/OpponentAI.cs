@@ -25,7 +25,7 @@ public class OpponentAI : SteeringAgent
             while (Vector3.Distance(transform.position, targetPos) > 1.5f)
             {
                 AddForce(Seek(targetPos) * _speed);
-                print(i);
+                
                 yield return null;
             }
         }

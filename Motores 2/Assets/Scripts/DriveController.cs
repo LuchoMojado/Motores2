@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 public class DriveController : SteeringAgent
 {
     Gyroscope _gyro;
-    Button _but;
+    
     [SerializeField] float _turnSensibility, _breakStr;
 
     float _currentRotation, _resetCount = 0;
@@ -17,13 +15,15 @@ public class DriveController : SteeringAgent
     protected override void Awake()
     {
         base.Awake();
-        //_but.
+        
         _gyro = Input.gyro;
         _gyro.enabled = true;
     }
 
     private void Update()
     {
+        //_rb.MovePosition(-transform.up * Time.deltaTime);
+
         float rotationRate = _gyro.rotationRate.z;
 
         if (Mathf.Abs(rotationRate) >= 0.05f)
@@ -54,6 +54,18 @@ public class DriveController : SteeringAgent
         Move();
     }
 
+    /*protected override void Move()
+    {
+        if (!breaking)
+        {
+            base.Move();
+        }
+        else
+        {
+            transform.forward = -_velocity;
+        }
+    }*/
+
     public void Accelerate()
     {
         var dir = transform.forward + transform.right * -_currentRotation * _turnSensibility;
@@ -64,6 +76,10 @@ public class DriveController : SteeringAgent
 
     public void Break()
     {
-        AddForce(-transform.forward * _breakStr);
+        _rb.velocity *= _breakStr;
+        if (0.1f >= _rb.velocity.magnitude)
+        {
+            _rb.velocity = Vector3.zero;
+        }
     }
 }
