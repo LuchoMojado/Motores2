@@ -10,6 +10,7 @@ public class DriveButtons : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     public enum ButtonType
     {
         Accelerate,
+        Boost,
         Break
     }
 
@@ -21,6 +22,9 @@ public class DriveButtons : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         {
             case ButtonType.Accelerate:
                 _car.accelerating = true;
+                break;
+            case ButtonType.Boost:
+                _car.boosting = true;
                 break;
             case ButtonType.Break:
                 _car.breaking = true;
@@ -36,6 +40,9 @@ public class DriveButtons : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         {
             case ButtonType.Accelerate:
                 _car.accelerating = false;
+                break;
+            case ButtonType.Boost:
+                _car.boosting = false;
                 break;
             case ButtonType.Break:
                 _car.breaking = false;

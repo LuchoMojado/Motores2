@@ -39,8 +39,18 @@ public abstract class SteeringAgent : MonoBehaviour
         _velocity = Vector3.ClampMagnitude(_velocity + force, _maxSpeed);
     }
 
+    public void ChangeAcceleration(float multiplier)
+    {
+        _acceleration = Mathf.Clamp(_acceleration + Time.deltaTime * _accChangeRate * multiplier, 0, _speed);
+    }
+
     public void ChangeAcceleration(float multiplier, float min)
     {
         _acceleration = Mathf.Clamp(_acceleration + Time.deltaTime * _accChangeRate * multiplier, min, _speed);
+    }
+
+    public void ChangeAcceleration(float multiplier, float min, float max)
+    {
+        _acceleration = Mathf.Clamp(_acceleration + Time.deltaTime * _accChangeRate * multiplier, min, max);
     }
 }

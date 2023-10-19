@@ -6,16 +6,18 @@ public class DriveController : SteeringAgent
 {
     Gyroscope _gyro;
     
-    [SerializeField] float _turnSensibility;
+    [SerializeField] float _turnSensibility, _boostDepletionRate, _maxBoost;
 
-    float _currentRotation, _resetCount = 0;
+    float _currentRotation, _resetCount = 0, _boost = 0;
 
-    public bool accelerating = false, breaking = false;
+    public bool accelerating = false, boosting = false, breaking = false;
     
     private void Awake()
     {
         _gyro = Input.gyro;
         _gyro.enabled = true;
+
+        _boost = _maxBoost;
     }
 
     private void Update()
@@ -27,43 +29,44 @@ public class DriveController : SteeringAgent
         if (Mathf.Abs(rotationRate) >= 0.05f)
         {
             _resetCount = 0;
-            _currentRotation = Mathf.Clamp(_currentRotation + rotationRate, -150, 150);
+            _currentRotation = Mathf.Clamp(_currentRotation + rotationRate, -160, 160);
         }
         else
         {
             _resetCount += Time.deltaTime;
-            if (_resetCount >= 0.7f && Mathf.Abs(_currentRotation) < 20)
+            if (_resetCount >= 0.6f && Mathf.Abs(_currentRotation) < 20)
             {
                 _currentRotation = 0;
             }
         }
-        
-
 
         //print(_currentRotation);
 
-        if (accelerating)
+        if (accelerating && _acceleration <= _speed)
         {
-            //Accelerate();
-            ChangeAcceleration(0.75f, 0);
+            ChangeAcceleration(0.75f);
         }
         else if (breaking)
         {
-            //Break();
             if (_acceleration > 0)
             {
-                ChangeAcceleration(-2, 0);
+                ChangeAcceleration(-2);
             }
             else
             {
                 ChangeAcceleration(-0.5f, _speed * -0.5f);
             }
         }
+        else if (boosting && _boost > 0)
+        {
+            ChangeBoost(-Time.deltaTime * _boostDepletionRate);
+            ChangeAcceleration(2.5f, 0, _speed * 1.5f);
+        }
         else
         {
             if (_acceleration > 0)
             {
-                ChangeAcceleration(-0.5f, 0);
+                ChangeAcceleration(-0.5f);
             }
             else if (_acceleration < 0)
             {
@@ -77,42 +80,14 @@ public class DriveController : SteeringAgent
         dir.Normalize();
 
         AddForce(dir);
-        //_velocity *= _breakStr;
+        
         Move();
     }
 
-    /*protected override void Move()
+    public void ChangeBoost(float amount)
     {
-        if (!breaking)
-        {
-            base.Move();
-        }
-        else
-        {
-            transform.forward = -_velocity;
-        }
-    }*/
-
-    public void Accelerate()
-    {
-        var dir = transform.forward + transform.right * -_currentRotation * _turnSensibility;
-        dir.Normalize();
-
-        AddForce(dir * _speed);
+        _boost = Mathf.Clamp(_boost + amount, 0, _maxBoost);
     }
-
-    public void Break()
-    {
-        /*var dir = transform.right * -_currentRotation * _turnSensibility;
-        AddForce(dir);*/
-
-        _velocity *= _breakStr;
-        if (0.1f >= _velocity.magnitude)
-        {
-            _velocity = Vector3.zero;
-        }
-    }
-
 
     public CoinsAndTime cAndT;
     private void OnTriggerEnter(Collider other)

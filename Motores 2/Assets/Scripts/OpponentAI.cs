@@ -25,15 +25,15 @@ public class OpponentAI : SteeringAgent
             {
                 if (targetDist > 15)
                 {
-                    ChangeAcceleration(0.75f, 0);
+                    ChangeAcceleration(0.75f);
                 }
                 else if (_acceleration < 1)
                 {
-                    ChangeAcceleration(1, 0);
+                    ChangeAcceleration(1);
                 }
                 else
                 {
-                    ChangeAcceleration(-1, 0);
+                    ChangeAcceleration(-1);
                 }
 
                 AddForce(Seek(targetPos));
