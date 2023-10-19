@@ -9,6 +9,7 @@ public class MenuManager : MonoBehaviour
     public Image tutorialMenu;
     public Image optionsMenu;
     public Image shopMenu;
+    public Image deleteMenu;
 
     private void Awake()
     {
@@ -21,6 +22,7 @@ public class MenuManager : MonoBehaviour
         tutorialMenu.gameObject.SetActive(false);
         optionsMenu.gameObject.SetActive(false);
         shopMenu.gameObject.SetActive(false);
+        deleteMenu.gameObject.SetActive(false);
     }
     public void TutorialMenu()
     {
@@ -28,6 +30,7 @@ public class MenuManager : MonoBehaviour
         tutorialMenu.gameObject.SetActive(true);
         optionsMenu.gameObject.SetActive(false);
         shopMenu.gameObject.SetActive(false);
+        deleteMenu.gameObject.SetActive(false);
     }
     public void OptionsMenu()
     {
@@ -35,6 +38,7 @@ public class MenuManager : MonoBehaviour
         tutorialMenu.gameObject.SetActive(false);
         optionsMenu.gameObject.SetActive(true);
         shopMenu.gameObject.SetActive(false);
+        deleteMenu.gameObject.SetActive(false);
     }
     public void ShopMenu()
     {
@@ -42,5 +46,14 @@ public class MenuManager : MonoBehaviour
         tutorialMenu.gameObject.SetActive(false);
         optionsMenu.gameObject.SetActive(false);
         shopMenu.gameObject.SetActive(true);
+        deleteMenu.gameObject.SetActive(false);
+    }
+    public void DeleteMenu()
+    {
+        mainMenu.gameObject.SetActive(false);
+        tutorialMenu.gameObject.SetActive(false);
+        optionsMenu.gameObject.SetActive(false);
+        shopMenu.gameObject.SetActive(false);
+        deleteMenu.gameObject.SetActive(true);
     }
 }

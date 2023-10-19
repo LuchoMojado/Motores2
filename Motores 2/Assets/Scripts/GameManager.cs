@@ -16,10 +16,9 @@ public class GameManager : MonoBehaviour
     public List<DriveController> actualCars = new List<DriveController>();
     public List<Sprite> posibleEnergys = new List<Sprite>();
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        Json.LoadGame();
     }
 
     // Update is called once per frame
@@ -40,6 +39,15 @@ public class GameManager : MonoBehaviour
     public void RestEnergy()
     {
         Json.saveData._energy -= 1;
+    }
+    public void DeleteGame()
+    {
+        Json.saveData._energy = 5;
+        Json.saveData._coins = 2;
+        Json.saveData._record = default;
+        Json.saveData._lastTime = default;
+        Json.saveData.cars.Clear();
+        Json.SaveGame();
     }
 
     public void Buy()

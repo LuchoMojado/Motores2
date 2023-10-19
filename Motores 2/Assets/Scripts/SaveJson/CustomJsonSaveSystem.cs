@@ -27,7 +27,7 @@ public class CustomJsonSaveSystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J)) GainCoinsAndEnergy();
     }
 
-    private void SaveGame()
+    public void SaveGame()
     {
         //string json = JsonUtility.ToJson(saveData);
         //
@@ -39,7 +39,7 @@ public class CustomJsonSaveSystem : MonoBehaviour
         Debug.Log(json);
     }
 
-    private void LoadGame()
+    public void LoadGame()
     {
         string json = File.ReadAllText(path);
         JsonUtility.FromJsonOverwrite(json, saveData);
