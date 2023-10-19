@@ -19,6 +19,10 @@ public class CheckFinish : MonoBehaviour
             vueltas++;
             print(vueltas);
             Finish.SetActive(false);
+            if(vueltas >= 2)
+            {
+                cAndT.Win(this.gameObject.layer);
+            }
         }
         if (other.gameObject.layer == LayerMask.NameToLayer("Finish On"))
         {

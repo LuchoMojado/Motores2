@@ -26,9 +26,18 @@ public class CoinsAndTime : MonoBehaviour
         
     }
 
-    public void Win()
+    public void Win(LayerMask who)
     {
-        finishTime = actualTime;
+        if(who == LayerMask.NameToLayer("Car"))
+        {
+            finishTime = actualTime;
+            NewRecord();
+            Json.SaveGame();
+        }
+        else if(who == LayerMask.NameToLayer("Enemy"))
+        {
+            Debug.Log("Perdiste");
+        }
     }
 
     public void TakeCoin()
@@ -40,6 +49,7 @@ public class CoinsAndTime : MonoBehaviour
     {
         if(finishTime > Json.saveData._record)
         {
+            Json.saveData._record = finishTime;
             Debug.Log("NEW RECORD");
         }
         else

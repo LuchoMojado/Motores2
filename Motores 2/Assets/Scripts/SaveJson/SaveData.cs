@@ -12,4 +12,5 @@ public class SaveData
     public float _record = 0;
     public float _lastTime = 0;
     public List<DriveController> cars = new List<DriveController>();
+    public bool madeTutorial = false;
 }
