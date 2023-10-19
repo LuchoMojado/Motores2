@@ -40,6 +40,12 @@ public class GameManager : MonoBehaviour
     {
         Json.saveData._energy -= 1;
     }
+
+    public void Save()
+    {
+        Json.SaveGame();
+    }
+
     public void DeleteGame()
     {
         Json.saveData._energy = 5;
@@ -47,7 +53,7 @@ public class GameManager : MonoBehaviour
         Json.saveData._record = default;
         Json.saveData._lastTime = default;
         Json.saveData.cars.Clear();
-        Json.SaveGame();
+        Save();
     }
 
     public void Buy()
