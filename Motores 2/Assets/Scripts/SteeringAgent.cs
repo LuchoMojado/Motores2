@@ -24,7 +24,7 @@ public abstract class SteeringAgent : MonoBehaviour
     {
         Vector3 desired = targetPos - transform.position;
         desired.Normalize();
-        //desired *= _maxSpeed;
+        desired *= _maxSpeed;
 
         Vector3 steering = desired - _velocity;
         steering = Vector3.ClampMagnitude(steering, _maxForce * Time.deltaTime);
