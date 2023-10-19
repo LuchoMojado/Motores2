@@ -15,9 +15,6 @@ public abstract class SteeringAgent : MonoBehaviour
         transform.position += _velocity * Time.deltaTime * _acceleration;
         if (_acceleration != 0) 
             transform.forward = _velocity;
-        /*else if(_acceleration < 0)
-            transform.forward = -_velocity;*/
-        //_velocity *= _breakStr;
     }
 
     protected Vector3 Seek(Vector3 targetPos)
