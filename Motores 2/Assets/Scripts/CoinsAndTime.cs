@@ -26,18 +26,15 @@ public class CoinsAndTime : MonoBehaviour
         
     }
 
-    public void Win(LayerMask who)
+    public void Win()
     {
-        if(who == LayerMask.NameToLayer("Car"))
-        {
-            finishTime = actualTime;
-            NewRecord();
-            Json.SaveGame();
-        }
-        else if(who == LayerMask.NameToLayer("Enemy"))
-        {
-            Debug.Log("Perdiste");
-        }
+        finishTime = actualTime;
+        NewRecord();
+        Json.SaveGame();
+    }
+    public void Lose()
+    {
+        Debug.Log("Perdiste");
     }
 
     public void TakeCoin()
