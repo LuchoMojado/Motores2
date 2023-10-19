@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CheckFinish : MonoBehaviour
 {
+    public CoinsAndTime cAndT;
     int vueltas;
     [SerializeField] GameObject Finish;
     private void Start()
