@@ -7,6 +7,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public ChangeScene change;
     public TextMeshProUGUI coinsT;
     public TextMeshProUGUI priceT;
     public TextMeshProUGUI recordT;
@@ -30,6 +31,10 @@ public class GameManager : MonoBehaviour
         Json.LoadGame();
         recordT.text = "Best Time: " + Json.saveData._record.ToString();
         lastTimeT.text = "Last Time: " + Json.saveData._lastTime.ToString();
+        if(Json.saveData.madeTutorial == false)
+        {
+            change.NewScene("Tutorial");
+        }
     }
 
     // Update is called once per frame

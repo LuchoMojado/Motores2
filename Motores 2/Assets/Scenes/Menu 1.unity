@@ -2581,6 +2581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a85c44756439fbd49a09182e24ea49cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  change: {fileID: 150039326}
   coinsT: {fileID: 1607880147}
   priceT: {fileID: 2089017157}
   recordT: {fileID: 5819892}
