@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI coinsT;
     public TextMeshProUGUI priceT;
+    public TextMeshProUGUI recordT;
+    public TextMeshProUGUI lastTimeT;
     public CustomJsonSaveSystem Json;
     public int actualCoins;
     public int actualEnergy;
@@ -24,6 +26,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Json.LoadGame();
+        recordT.text = "Best Time: " + Json.saveData._record.ToString();
+        lastTimeT.text = "Last Time: " + Json.saveData._lastTime.ToString();
     }
 
     // Update is called once per frame

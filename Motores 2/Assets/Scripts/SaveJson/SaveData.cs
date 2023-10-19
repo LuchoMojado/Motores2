@@ -9,7 +9,7 @@ public class SaveData
 {
     public int _energy;
     public int _coins = 2;
-    public float _record;
-    public float _lastTime;
+    public float _record = 0;
+    public float _lastTime = 0;
     public List<DriveController> cars = new List<DriveController>();
 }
