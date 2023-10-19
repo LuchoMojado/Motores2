@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public Image Ienergy;
     public List<DriveController> actualCars = new List<DriveController>();
     public List<Sprite> posibleEnergys = new List<Sprite>();
+    public Button Bplay;
+    public Button BplayS;
 
     private void Awake()
     {
