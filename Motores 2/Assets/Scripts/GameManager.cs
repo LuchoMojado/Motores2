@@ -44,7 +44,23 @@ public class GameManager : MonoBehaviour
         if (actualEnergy == 3) Ienergy.sprite = posibleEnergys[3];
         if (actualEnergy == 2) Ienergy.sprite = posibleEnergys[2];
         if (actualEnergy == 1) Ienergy.sprite = posibleEnergys[1];
-        if (actualEnergy == 0) Ienergy.sprite = posibleEnergys[0];
+        if (actualEnergy == 0)
+        {
+            Ienergy.sprite = posibleEnergys[0];
+            Bplay.GetComponent<Image>().raycastTarget = false;
+            Bplay.GetComponent<Image>().color = Color.red;
+            BplayS.GetComponent<Image>().raycastTarget = false;
+            BplayS.GetComponent<Image>().color = Color.red;
+        }
+        if(actualEnergy <= 4)
+        {
+            float restoreEnergy = Time.deltaTime;
+            if(restoreEnergy >= 300)
+            {
+                Json.saveData._energy += 1;
+                restoreEnergy = 0;
+            }
+        }
     }
 
     public void RestEnergy()
