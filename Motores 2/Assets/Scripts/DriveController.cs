@@ -6,9 +6,9 @@ public class DriveController : SteeringAgent
 {
     Gyroscope _gyro;
     
-    [SerializeField] float _turnSensibility, _breakStr, _accChangeRate;
+    [SerializeField] float _turnSensibility;
 
-    float _currentRotation, _resetCount = 0, _acceleration;
+    float _currentRotation, _resetCount = 0;
 
     public bool accelerating = false, breaking = false;
     
@@ -45,23 +45,39 @@ public class DriveController : SteeringAgent
         if (accelerating)
         {
             //Accelerate();
-            ChangeAcceleration(1);
+            ChangeAcceleration(0.75f, 0);
         }
         else if (breaking)
         {
             //Break();
-            ChangeAcceleration(-2);
+            if (_acceleration > 0)
+            {
+                ChangeAcceleration(-2, 0);
+            }
+            else
+            {
+                ChangeAcceleration(-0.5f, _speed * -0.5f);
+            }
         }
         else
         {
-            ChangeAcceleration(-0.5f);
+            if (_acceleration > 0)
+            {
+                ChangeAcceleration(-0.5f, 0);
+            }
+            else if (_acceleration < 0)
+            {
+                ChangeAcceleration(0.5f, _speed * -0.5f);
+            }
         }
+
+        print(_acceleration);
 
         var dir = transform.forward + transform.right * -_currentRotation * _turnSensibility;
         dir.Normalize();
 
-        AddForce(dir * _acceleration);
-        _velocity *= _breakStr;
+        AddForce(dir);
+        //_velocity *= _breakStr;
         Move();
     }
 
@@ -76,11 +92,6 @@ public class DriveController : SteeringAgent
             transform.forward = -_velocity;
         }
     }*/
-
-    public void ChangeAcceleration(float multiplier)
-    {
-        _acceleration = Mathf.Clamp(_acceleration + Time.deltaTime * _accChangeRate * multiplier, 0, _speed);
-    }
 
     public void Accelerate()
     {

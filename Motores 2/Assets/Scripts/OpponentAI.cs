@@ -22,9 +22,22 @@ public class OpponentAI : SteeringAgent
         {
             Vector3 targetPos = new Vector3(waypoints[i].position.x, transform.position.y, waypoints[i].position.z);
 
-            while (Vector3.Distance(transform.position, targetPos) > 1.5f)
+            float targetDist = Vector3.Distance(transform.position, targetPos);
+
+            while (targetDist > 1.5f)
             {
-                AddForce(Seek(targetPos) * _speed);
+                if (targetDist > 10)
+                {
+                    _speed = 3;
+                }
+                else
+                {
+                    _speed = 2;
+                }
+
+                ChangeAcceleration(1, 0);
+
+                AddForce(Seek(targetPos));
                 
                 yield return null;
             }
