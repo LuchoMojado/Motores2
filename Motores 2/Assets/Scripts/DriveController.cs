@@ -101,4 +101,15 @@ public class DriveController : SteeringAgent
             _velocity = Vector3.zero;
         }
     }
+
+
+    public CoinsAndTime cAndT;
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Coin"))
+        {
+            cAndT.TakeCoin();
+            Destroy(other.gameObject);
+        }
+    }
 }

@@ -31,6 +31,11 @@ public class CoinsAndTime : MonoBehaviour
         finishTime = actualTime;
     }
 
+    public void TakeCoin()
+    {
+        Json.saveData._coins += 1;
+    }
+
     public void NewRecord()
     {
         if(finishTime > Json.saveData._record)

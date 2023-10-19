@@ -2026,6 +2026,7 @@ MonoBehaviour:
   _accChangeRate: 0.5
   accelerating: 0
   breaking: 0
+  cAndT: {fileID: 1037718487}
 --- !u!1001 &450218278
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11379,6 +11380,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3e29f73f1cddba240b1ef5ebeb61267e, type: 3}
       propertyPath: m_Name
       value: Car
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3e29f73f1cddba240b1ef5ebeb61267e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e29f73f1cddba240b1ef5ebeb61267e, type: 3}
