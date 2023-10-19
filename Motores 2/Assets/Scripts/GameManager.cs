@@ -11,7 +11,10 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI priceT;
     public CustomJsonSaveSystem Json;
     public int actualCoins;
+    public int actualEnergy;
+    public Image Ienergy;
     public List<DriveController> actualCars = new List<DriveController>();
+    public List<Sprite> posibleEnergys = new List<Sprite>();
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +27,19 @@ public class GameManager : MonoBehaviour
     {
         actualCars = Json.saveData.cars;
         actualCoins = Json.saveData._coins;
+        actualEnergy = Json.saveData._energy;
         coinsT.text = "You Have: " + actualCoins.ToString();
+        if (actualEnergy == 5) Ienergy.sprite = posibleEnergys[5];
+        if (actualEnergy == 4) Ienergy.sprite = posibleEnergys[4];
+        if (actualEnergy == 3) Ienergy.sprite = posibleEnergys[3];
+        if (actualEnergy == 2) Ienergy.sprite = posibleEnergys[2];
+        if (actualEnergy == 1) Ienergy.sprite = posibleEnergys[1];
+        if (actualEnergy == 0) Ienergy.sprite = posibleEnergys[0];
+    }
+
+    public void RestEnergy()
+    {
+        Json.saveData._energy -= 1;
     }
 
     public void Buy()
