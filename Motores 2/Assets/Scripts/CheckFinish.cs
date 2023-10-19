@@ -5,28 +5,37 @@ using UnityEngine;
 public class CheckFinish : MonoBehaviour
 {
     public CoinsAndTime cAndT;
-    int vueltas;
-    [SerializeField] GameObject Finish;
+    [SerializeField] int _playerVueltas, _iaVueltas;
+    public bool canPass;
+    //[SerializeField] GameObject Finish;
     private void Start()
     {
-        vueltas = 0;
-        Finish.SetActive(false);
+        _playerVueltas = 0;
+        _iaVueltas = 0;
+        canPass = false;
+        //Finish.SetActive(false);
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Finish"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Car") && canPass)
         {
-            vueltas++;
-            print(vueltas);
-            Finish.SetActive(false);
-            if(vueltas >= 2)
+            _playerVueltas++;
+            canPass = false;
+            //print(_playerVueltas);
+            //Finish.SetActive(false);
+            if (_playerVueltas >= 3)
             {
-                cAndT.Win(this.gameObject.layer);
+                cAndT.Win();
             }
         }
-        if (other.gameObject.layer == LayerMask.NameToLayer("Finish On"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            Finish.SetActive(true);
+            //Finish.SetActive(true);
+            _iaVueltas++;
+            if (_iaVueltas >= 3)
+            {
+                cAndT.Lose();
+            }
         }
     }
 }
