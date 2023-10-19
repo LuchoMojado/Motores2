@@ -2,22 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 public abstract class SteeringAgent : MonoBehaviour
 {
-    protected Rigidbody _rb;
-
     protected Vector3 _velocity = Vector3.zero;
 
     [SerializeField] protected float _maxSpeed, _maxForce, _speed;
 
-    protected virtual void Awake()
-    {
-        _rb = GetComponent<Rigidbody>();
-    }
-
     protected virtual void Move()
     {
+        transform.position += _velocity * Time.deltaTime;
         if (_velocity != Vector3.zero) transform.forward = _velocity;
     }
 
@@ -41,7 +34,5 @@ public abstract class SteeringAgent : MonoBehaviour
     protected void AddForce(Vector3 force)
     {
         _velocity = Vector3.ClampMagnitude(_velocity + force, _maxSpeed);
-        _rb.AddForce(_velocity);
-        _rb.velocity = Vector3.ClampMagnitude(_rb.velocity, _maxSpeed);
     }
 }
