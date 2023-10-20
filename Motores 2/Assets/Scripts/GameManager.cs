@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
     public List<DriveController> actualCars = new List<DriveController>();
     public List<Sprite> posibleEnergys = new List<Sprite>();
     public Button Bplay;
-    public Button BplayS;
 
     private void Awake()
     {
@@ -54,8 +53,6 @@ public class GameManager : MonoBehaviour
             Ienergy.sprite = posibleEnergys[0];
             Bplay.GetComponent<Image>().raycastTarget = false;
             Bplay.GetComponent<Image>().color = Color.red;
-            BplayS.GetComponent<Image>().raycastTarget = false;
-            BplayS.GetComponent<Image>().color = Color.red;
         }
         if(actualEnergy <= 4)
         {
