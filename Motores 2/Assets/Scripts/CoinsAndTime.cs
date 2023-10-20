@@ -16,6 +16,7 @@ public class CoinsAndTime : MonoBehaviour
     public Image lose;
     public Image pause;
     public Image uiGame;
+    public Button losePlayAgain;
     public TextMeshProUGUI WinRecordT;
     public TextMeshProUGUI WinTimeT;
 
@@ -47,6 +48,20 @@ public class CoinsAndTime : MonoBehaviour
         uiGame.gameObject.SetActive(false);
         lose.gameObject.SetActive(true);
         Debug.Log("Perdiste");
+    }
+
+    public void ReTry()
+    {
+        if(Json.saveData._energy > 0)
+        {
+            Json.saveData._energy -= 1;
+        }
+        else
+        {
+
+            losePlayAgain.GetComponent<Image>().raycastTarget = false;
+            losePlayAgain.GetComponent<Image>().color = Color.red;
+        }
     }
     public void PauseS()
     {
