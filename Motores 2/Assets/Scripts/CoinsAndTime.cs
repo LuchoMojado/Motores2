@@ -20,6 +20,10 @@ public class CoinsAndTime : MonoBehaviour
     public TextMeshProUGUI WinRecordT;
     public TextMeshProUGUI WinTimeT;
 
+    private void Awake()
+    {
+        Json.LoadGame();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -47,6 +51,7 @@ public class CoinsAndTime : MonoBehaviour
     {
         uiGame.gameObject.SetActive(false);
         lose.gameObject.SetActive(true);
+        ReTry();
         Debug.Log("Perdiste");
     }
 
