@@ -51,15 +51,19 @@ public class GameManager : MonoBehaviour
             Bplay.GetComponent<Image>().raycastTarget = false;
             Bplay.GetComponent<Image>().color = Color.red;
         }
+        else
+        {
+            Bplay.GetComponent<Image>().raycastTarget = true;
+            Bplay.GetComponent<Image>().color = Color.white;
+        }
         if(actualEnergy <= 4)
         {
             restoreEnergy += Time.deltaTime;
-            restTimeLeft.text = "Add Energy in: " + (int)restoreEnergy + "s/ 5 mins";
+            restTimeLeft.text = "Add Energy in: " + (int)restoreEnergy + "seg/ 5 mins";
             if (restoreEnergy >= 300)
             {
                 Json.saveData._energy += 1;
                 restoreEnergy = 0;
-                restTimeLeft.text = "Add Energy in: 0s/ 5 mins";
             }
         }
     }
