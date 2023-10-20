@@ -53,4 +53,12 @@ public abstract class SteeringAgent : MonoBehaviour
     {
         _acceleration = Mathf.Clamp(_acceleration + Time.deltaTime * _accChangeRate * multiplier, min, max);
     }
+
+    public void Gravity()
+    {
+        if (!Physics.Raycast(transform.position, -transform.up, out RaycastHit ray, 0.5f))
+        {
+            transform.position -= -transform.up * Time.deltaTime * 0.5f;
+        }
+    }
 }

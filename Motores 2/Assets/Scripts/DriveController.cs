@@ -82,6 +82,7 @@ public class DriveController : SteeringAgent
         AddForce(dir);
         
         Move();
+        Gravity();
     }
 
     public void ChangeBoost(float amount)

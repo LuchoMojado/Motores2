@@ -50,6 +50,7 @@ public class OpponentAI : SteeringAgent
         }
 
         Move();
+        Gravity();
     }
 
     protected bool ObstacleAvoidance(out Vector3 v)
