@@ -91,7 +91,7 @@ public class CoinsAndTime : MonoBehaviour
 
     public void NewRecord()
     {
-        if(finishTime > Json.saveData._record)
+        if (finishTime < Json.saveData._record)
         {
             Json.saveData._record = finishTime;
             Debug.Log("NEW RECORD");
