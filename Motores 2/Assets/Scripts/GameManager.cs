@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Json.SaveGame();
         Json.LoadGame();
         recordT.text = "Best Time: " + Json.saveData._record.ToString();
         lastTimeT.text = "Last Time: " + Json.saveData._lastTime.ToString();

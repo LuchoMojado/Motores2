@@ -5449,7 +5449,7 @@ MonoBehaviour:
     _record: 0
     _lastTime: 0
     cars: []
-    madeTutorial: 1
+    madeTutorial: 0
     timeToEnergy: 0
 --- !u!4 &1930837333
 Transform:
