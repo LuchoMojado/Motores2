@@ -4351,7 +4351,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -48.09485, w: 0}
+  m_margin: {x: 0, y: 0, z: -78.144806, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5450,6 +5450,7 @@ MonoBehaviour:
     _lastTime: 0
     cars: []
     madeTutorial: 1
+    timeToEnergy: 0
 --- !u!4 &1930837333
 Transform:
   m_ObjectHideFlags: 0

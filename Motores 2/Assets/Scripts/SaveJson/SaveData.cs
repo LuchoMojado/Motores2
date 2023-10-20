@@ -13,4 +13,5 @@ public class SaveData
     public float _lastTime = 0;
     public List<DriveController> cars = new List<DriveController>();
     public bool madeTutorial = false;
+    public float timeToEnergy;
 }

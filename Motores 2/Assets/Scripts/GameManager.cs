@@ -54,12 +54,11 @@ public class GameManager : MonoBehaviour
         if(actualEnergy <= 4)
         {
             restoreEnergy += Time.deltaTime;
-            restTimeLeft.text = "Add Energy in: " + (int)restoreEnergy + "s/ 5 mins";
+            restTimeLeft.text = "Add Energy in: " + (int)restoreEnergy + "seg/ 5 mins";
             if (restoreEnergy >= 300)
             {
                 Json.saveData._energy += 1;
                 restoreEnergy = 0;
-                restTimeLeft.text = "Add Energy in: 0s/ 5 mins";
             }
         }
     }

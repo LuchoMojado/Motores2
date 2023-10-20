@@ -61,6 +61,8 @@ public class CoinsAndTime : MonoBehaviour
         if(Json.saveData._energy > 0)
         {
             Json.saveData._energy -= 1;
+            losePlayAgain.GetComponent<Image>().raycastTarget = true;
+            losePlayAgain.GetComponent<Image>().color = Color.white;
         }
         else
         {
