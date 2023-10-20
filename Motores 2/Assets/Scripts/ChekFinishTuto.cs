@@ -23,10 +23,11 @@ public class ChekFinishTuto : MonoBehaviour
             canPass = false;
             //print(_playerVueltas);
             //Finish.SetActive(false);
-            if (_playerVueltas >= 3)
+            if (_playerVueltas >= 1)
             {
                 //cAndT.Win();
                 Json.saveData.madeTutorial = true;
+                Json.SaveGame();
                 change.NewScene("Menu 1");
             }
         }

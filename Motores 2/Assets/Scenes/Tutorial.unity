@@ -4072,7 +4072,7 @@ MonoBehaviour:
   _playerVueltas: 0
   canPass: 0
   Json: {fileID: 1881641970}
-  change: {fileID: 0}
+  change: {fileID: 1966441965}
 --- !u!1 &1837036712
 GameObject:
   m_ObjectHideFlags: 0
