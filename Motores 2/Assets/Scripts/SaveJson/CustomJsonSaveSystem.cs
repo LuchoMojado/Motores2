@@ -11,11 +11,13 @@ public class CustomJsonSaveSystem : MonoBehaviour
 
     private void Awake()
     {
-        string customDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments).Replace("\\","/") + "/" + Application.companyName + "/" + Application.productName;
+        //string customDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments).Replace("\\","/") + "/" + Application.companyName + "/" + Application.productName;
 
-        if (!Directory.Exists(customDirectory)) Directory.CreateDirectory(customDirectory);
+        //if (!Directory.Exists(customDirectory)) Directory.CreateDirectory(customDirectory);
 
-        path = customDirectory + "/Iceberg.Incoming";
+        path = Application.persistentDataPath + "/Iceberg.Incoming";
+
+        //path = customDirectory + "/Iceberg.Incoming";
 
         //Debug.Log(path);
     }
