@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
             {
                 Json.saveData._energy += 1;
                 restoreEnergy = 0;
+                restTimeLeft.text = "Add Energy in: 0s/ 5 mins";
             }
         }
     }

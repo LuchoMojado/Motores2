@@ -17,7 +17,7 @@ public class CustomJsonSaveSystem : MonoBehaviour
 
         path = customDirectory + "/Iceberg.Incoming";
 
-        Debug.Log(path);
+        //Debug.Log(path);
     }
 
     void Update()
@@ -36,7 +36,7 @@ public class CustomJsonSaveSystem : MonoBehaviour
         string json = JsonUtility.ToJson(saveData, true);
         File.WriteAllText(path, json);
 
-        Debug.Log(json);
+        //Debug.Log(json);
     }
 
     public void LoadGame()
