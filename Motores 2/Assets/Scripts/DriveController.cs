@@ -9,6 +9,7 @@ public class DriveController : SteeringAgent
     public CoinsAndTime cAndT;
 
     [SerializeField] float _turnSensibility, _boostDepletionRate, _maxBoost;
+    [SerializeField] Animator _anim;
 
     float _currentRotation, _resetCount = 0, _boost = 0;
 
@@ -48,6 +49,7 @@ public class DriveController : SteeringAgent
         }
         else if (breaking)
         {
+            _anim.SetBool("Breaking", true);
             if (_acceleration > 0)
             {
                 ChangeAcceleration(-2);
@@ -59,11 +61,14 @@ public class DriveController : SteeringAgent
         }
         else if (boosting && _boost > 0 && !walled)
         {
+            _anim.SetBool("Turbo", true);
             ChangeBoost(-Time.deltaTime * _boostDepletionRate);
             ChangeAcceleration(2.5f, 0, _speed * 1.5f);
         }
         else
         {
+            _anim.SetBool("Turbo", false);
+            _anim.SetBool("Breaking", false);
             if (_acceleration > 0)
             {
                 ChangeAcceleration(-0.5f);
@@ -74,7 +79,7 @@ public class DriveController : SteeringAgent
             }
         }
 
-        print(_acceleration);
+        //print(_acceleration);
 
         var dir = transform.forward + transform.right * -_currentRotation * _turnSensibility;
         dir.Normalize();
@@ -82,7 +87,7 @@ public class DriveController : SteeringAgent
         AddForce(dir);
         
         Move();
-        Gravity();
+        //Gravity();
     }
 
     public void ChangeBoost(float amount)

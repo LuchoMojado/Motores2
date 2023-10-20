@@ -103,7 +103,7 @@ public abstract class SteeringAgent : MonoBehaviour
     {
         if (!Physics.Raycast(transform.position, -transform.up, out RaycastHit ray, 0.5f))
         {
-            transform.position -= -transform.up * Time.deltaTime * 0.5f;
+            transform.position += -transform.up * Time.deltaTime * 0.5f;
         }
     }
 }

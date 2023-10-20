@@ -25,6 +25,7 @@ public class CheckFinish : MonoBehaviour
             //Finish.SetActive(false);
             if (_playerVueltas >= 3)
             {
+                gameObject.SetActive(false);
                 cAndT.Win();
             }
         }
@@ -34,6 +35,7 @@ public class CheckFinish : MonoBehaviour
             _iaVueltas++;
             if (_iaVueltas >= 3)
             {
+                gameObject.SetActive(false);
                 cAndT.Lose();
             }
         }
