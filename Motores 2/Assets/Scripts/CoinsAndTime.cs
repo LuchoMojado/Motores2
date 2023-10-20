@@ -12,6 +12,12 @@ public class CoinsAndTime : MonoBehaviour
     public CustomJsonSaveSystem Json;
     float actualTime;
     float finishTime;
+    public Image win;
+    public Image lose;
+    public Image pause;
+    public Image uiGame;
+    public TextMeshProUGUI WinRecordT;
+    public TextMeshProUGUI WinTimeT;
 
     // Update is called once per frame
     void Update()
@@ -31,10 +37,28 @@ public class CoinsAndTime : MonoBehaviour
         finishTime = actualTime;
         NewRecord();
         Json.SaveGame();
+        win.gameObject.SetActive(true);
+        WinRecordT.text = "Record: " + Json.saveData._record.ToString();
+        WinTimeT.text = "Time: " + finishTime.ToString();
+        uiGame.gameObject.SetActive(false);
     }
     public void Lose()
     {
+        uiGame.gameObject.SetActive(false);
+        lose.gameObject.SetActive(true);
         Debug.Log("Perdiste");
+    }
+    public void PauseS()
+    {
+        Time.timeScale = 0;
+        uiGame.gameObject.SetActive(false);
+        pause.gameObject.SetActive(true);
+    }
+    public void UnPauseS()
+    {
+        Time.timeScale = 1;
+        uiGame.gameObject.SetActive(true);
+        pause.gameObject.SetActive(false);
     }
 
     public void TakeCoin()
