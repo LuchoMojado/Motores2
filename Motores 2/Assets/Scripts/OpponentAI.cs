@@ -6,8 +6,6 @@ public class OpponentAI : SteeringAgent
 {
     [SerializeField] Transform[] waypoints;
     int _currentWaypoint = 0;
-    float _viewRange;
-    LayerMask _obstacleLM;
 
     void Update()
     {
@@ -51,26 +49,6 @@ public class OpponentAI : SteeringAgent
 
         Move();
         Gravity();
-    }
-
-    protected bool ObstacleAvoidance(out Vector3 v)
-    {
-        bool lRaycast = Physics.Raycast(transform.position - transform.right * 0.5f, transform.forward, _viewRange, _obstacleLM);
-        bool rRaycast = Physics.Raycast(transform.position + transform.right * 0.5f, transform.forward, _viewRange, _obstacleLM);
-
-        if (lRaycast)
-        {
-            v = CalculateSteering(-transform.forward * _maxSpeed);
-            return true;
-        }
-        else if (rRaycast)
-        {
-            v = CalculateSteering(transform.forward * _maxSpeed);
-            return true;
-        }
-
-        v = Vector3.zero;
-        return false;
     }
 }
 //<>new Vector3(waypoints[i].position.x, transform.position.y, waypoints[i].position.z)

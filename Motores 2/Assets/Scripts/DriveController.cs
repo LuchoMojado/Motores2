@@ -22,7 +22,7 @@ public class DriveController : SteeringAgent
 
     private void Update()
     {
-        //_rb.MovePosition(-transform.up * Time.deltaTime);
+        bool walled = ObstacleAvoidance();
 
         float rotationRate = _gyro.rotationRate.z;
 
@@ -42,7 +42,7 @@ public class DriveController : SteeringAgent
 
         //print(_currentRotation);
 
-        if (accelerating && _acceleration <= _speed)
+        if (accelerating && _acceleration <= _speed && !walled)
         {
             ChangeAcceleration(0.75f);
         }
@@ -57,7 +57,7 @@ public class DriveController : SteeringAgent
                 ChangeAcceleration(-0.5f, _speed * -0.5f);
             }
         }
-        else if (boosting && _boost > 0)
+        else if (boosting && _boost > 0 && !walled)
         {
             ChangeBoost(-Time.deltaTime * _boostDepletionRate);
             ChangeAcceleration(2.5f, 0, _speed * 1.5f);

@@ -6,7 +6,9 @@ public abstract class SteeringAgent : MonoBehaviour
 {
     protected Vector3 _velocity = Vector3.zero;
 
-    [SerializeField] protected float _maxSpeed, _maxForce, _speed, _accChangeRate, _breakStr;
+    [SerializeField] protected float _maxSpeed, _maxForce, _speed, _accChangeRate, _breakStr, _viewRange;
+
+    [SerializeField] LayerMask _obstacleLM;
 
     protected float _acceleration = 0;
 
@@ -27,6 +29,49 @@ public abstract class SteeringAgent : MonoBehaviour
         steering = Vector3.ClampMagnitude(steering, _maxForce * Time.deltaTime);
 
         return steering;
+    }
+
+    protected bool ObstacleAvoidance()
+    {
+        bool lRaycast = Physics.Raycast(transform.position - transform.right * 0.5f, transform.forward, _viewRange, _obstacleLM);
+        bool rRaycast = Physics.Raycast(transform.position + transform.right * 0.5f, transform.forward, _viewRange, _obstacleLM);
+
+        if (lRaycast)
+        {
+            return true;
+        }
+        else if (rRaycast)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    protected bool ObstacleAvoidance(out Vector3 v)
+    {
+        bool lRaycast = Physics.Raycast(transform.position - transform.right * 0.5f, transform.forward, _viewRange, _obstacleLM);
+        bool rRaycast = Physics.Raycast(transform.position + transform.right * 0.5f, transform.forward, _viewRange, _obstacleLM);
+
+        if (lRaycast && rRaycast)
+        {
+            ChangeAcceleration(-8, -_speed);
+            v = Vector3.zero;
+            return true;
+        }
+        else if (lRaycast)
+        {
+            v = CalculateSteering(-transform.forward * _maxSpeed);
+            return true;
+        }
+        else if (rRaycast)
+        {
+            v = CalculateSteering(transform.forward * _maxSpeed);
+            return true;
+        }
+
+        v = Vector3.zero;
+        return false;
     }
 
     protected Vector3 CalculateSteering(Vector3 desired)
