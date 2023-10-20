@@ -24,6 +24,7 @@ public class CoinsAndTime : MonoBehaviour
     private void Start()
     {
         Json.LoadGame();
+        Time.timeScale = 1;
     }
 
     void Update()
