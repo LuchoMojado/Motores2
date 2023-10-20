@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DriveController : SteeringAgent
 {
     Gyroscope _gyro;
+
+    [SerializeField] Image _boostBar;
 
     public CoinsAndTime cAndT;
 
@@ -89,5 +92,7 @@ public class DriveController : SteeringAgent
     public void ChangeBoost(float amount)
     {
         _boost = Mathf.Clamp(_boost + amount, 0, _maxBoost);
+
+        _boostBar.fillAmount = Mathf.InverseLerp(0, _maxBoost, _boost);
     }
 }
