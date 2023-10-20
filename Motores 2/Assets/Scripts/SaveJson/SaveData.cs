@@ -8,7 +8,7 @@ using UnityEngine;
 public class SaveData
 {
     public int _energy;
-    public int _coins = 2;
+    public int _coins = 60;
     public float _record = 0;
     public float _lastTime = 0;
     public List<DriveController> cars = new List<DriveController>();

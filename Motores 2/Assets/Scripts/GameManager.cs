@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI priceT;
     public TextMeshProUGUI recordT;
     public TextMeshProUGUI lastTimeT;
+    public TextMeshProUGUI restTimeLeft;
     public CustomJsonSaveSystem Json;
     public int actualCoins;
     public int actualEnergy;
@@ -19,11 +20,7 @@ public class GameManager : MonoBehaviour
     public List<DriveController> actualCars = new List<DriveController>();
     public List<Sprite> posibleEnergys = new List<Sprite>();
     public Button Bplay;
-
-    private void Awake()
-    {
-        
-    }
+    float restoreEnergy = 0;
 
     private void Start()
     {
@@ -56,8 +53,9 @@ public class GameManager : MonoBehaviour
         }
         if(actualEnergy <= 4)
         {
-            float restoreEnergy = Time.deltaTime;
-            if(restoreEnergy >= 300)
+            restoreEnergy += Time.deltaTime;
+            restTimeLeft.text = "Add Energy in: " + (int)restoreEnergy + "s/ 5 mins";
+            if (restoreEnergy >= 300)
             {
                 Json.saveData._energy += 1;
                 restoreEnergy = 0;
@@ -78,19 +76,25 @@ public class GameManager : MonoBehaviour
     public void DeleteGame()
     {
         Json.saveData._energy = 5;
-        Json.saveData._coins = 2;
+        Json.saveData._coins = 60;
         Json.saveData._record = default;
         Json.saveData._lastTime = default;
         Json.saveData.cars.Clear();
+        Json.saveData.madeTutorial = false;
         Save();
     }
 
     public void Buy()
     {
-        if(actualCoins > 0)
+        if(actualCoins >= 30)
         {
             SelectCar();
         }
+    }
+
+    public void GainCoins()
+    {
+        Json.GainCoinsAndEnergy();
     }
 
     public void SelectCar()
@@ -119,7 +123,7 @@ public class GameManager : MonoBehaviour
             //Hacer varios prefabs de autos y cuando seleccione este ponerle el valor correspondiente
         }
 
-        Json.saveData._coins -= 1;
+        Json.saveData._coins -= 30;
         //AGREGAR EL AUTO A LA LISTA
         //Json.saveData.cars.Add();
     }

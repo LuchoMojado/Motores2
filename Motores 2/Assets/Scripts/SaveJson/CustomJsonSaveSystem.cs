@@ -13,7 +13,7 @@ public class CustomJsonSaveSystem : MonoBehaviour
     {
         string customDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments).Replace("\\","/") + "/" + Application.companyName + "/" + Application.productName;
 
-        if(!Directory.Exists(customDirectory)) Directory.CreateDirectory(customDirectory);
+        if (!Directory.Exists(customDirectory)) Directory.CreateDirectory(customDirectory);
 
         path = customDirectory + "/Iceberg.Incoming";
 
@@ -45,9 +45,9 @@ public class CustomJsonSaveSystem : MonoBehaviour
         JsonUtility.FromJsonOverwrite(json, saveData);
     }
 
-    private void GainCoinsAndEnergy()
+    public void GainCoinsAndEnergy()
     {
-        saveData._coins = 100;
-        saveData._energy = 100;
+        saveData._coins = 90;
+        saveData._energy = 5;
     }
 }
