@@ -5,7 +5,9 @@ using UnityEngine;
 public class DriveController : SteeringAgent
 {
     Gyroscope _gyro;
-    
+
+    public CoinsAndTime cAndT;
+
     [SerializeField] float _turnSensibility, _boostDepletionRate, _maxBoost;
 
     float _currentRotation, _resetCount = 0, _boost = 0;
@@ -16,8 +18,6 @@ public class DriveController : SteeringAgent
     {
         _gyro = Input.gyro;
         _gyro.enabled = true;
-
-        _boost = _maxBoost;
     }
 
     private void Update()
@@ -87,15 +87,5 @@ public class DriveController : SteeringAgent
     public void ChangeBoost(float amount)
     {
         _boost = Mathf.Clamp(_boost + amount, 0, _maxBoost);
-    }
-
-    public CoinsAndTime cAndT;
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Coin"))
-        {
-            cAndT.TakeCoin();
-            Destroy(other.gameObject);
-        }
     }
 }
