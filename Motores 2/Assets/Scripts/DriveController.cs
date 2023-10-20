@@ -46,6 +46,7 @@ public class DriveController : SteeringAgent
 
             if (accelerating && _acceleration <= _speed)
             {
+                _anim.SetBool("Accelerating", true);
                 ChangeAcceleration(0.75f);
             }
             else if (breaking)
@@ -68,6 +69,7 @@ public class DriveController : SteeringAgent
             }
             else
             {
+                _anim.SetBool("Accelerating", false);
                 _anim.SetBool("Turbo", false);
                 _anim.SetBool("Breaking", false);
                 if (_acceleration > 0)

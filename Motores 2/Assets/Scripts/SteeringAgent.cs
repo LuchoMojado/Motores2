@@ -61,10 +61,10 @@ public abstract class SteeringAgent : MonoBehaviour
 
     protected bool CheckCollision(out bool wallBack)
     {
-        bool lRaycast = Physics.Raycast(transform.position - transform.right * 0.4f, transform.forward, 2.5f, _obstacleLM);
-        bool rRaycast = Physics.Raycast(transform.position + transform.right * 0.4f, transform.forward, 2.5f, _obstacleLM);
-        bool lBackRaycast = Physics.Raycast(transform.position - transform.right * 0.4f, -transform.forward, 2.5f, _obstacleLM);
-        bool rBackRaycast = Physics.Raycast(transform.position + transform.right * 0.4f, -transform.forward, 2.5f, _obstacleLM);
+        bool lRaycast = Physics.Raycast(transform.position - transform.right * 0.4f, transform.forward, 2.3f, _obstacleLM);
+        bool rRaycast = Physics.Raycast(transform.position + transform.right * 0.4f, transform.forward, 2.3f, _obstacleLM);
+        bool lBackRaycast = Physics.Raycast(transform.position - transform.right * 0.4f, -transform.forward, 2.3f, _obstacleLM);
+        bool rBackRaycast = Physics.Raycast(transform.position + transform.right * 0.4f, -transform.forward, 2.3f, _obstacleLM);
 
         if (lRaycast || rRaycast)
         {

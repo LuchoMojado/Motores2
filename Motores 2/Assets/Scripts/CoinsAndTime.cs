@@ -21,11 +21,11 @@ public class CoinsAndTime : MonoBehaviour
     public TextMeshProUGUI WinTimeT;
     public bool paused = false;
 
-    private void Awake()
+    private void Start()
     {
         Json.LoadGame();
     }
-    
+
     void Update()
     {
         actualTime += Time.deltaTime;
