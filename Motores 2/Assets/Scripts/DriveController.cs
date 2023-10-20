@@ -23,71 +23,67 @@ public class DriveController : SteeringAgent
 
     private void Update()
     {
-        bool walled = ObstacleAvoidance();
-
-        float rotationRate = _gyro.rotationRate.z;
-
-        if (Mathf.Abs(rotationRate) >= 0.05f)
+        if (!cAndT.paused)
         {
-            _resetCount = 0;
-            _currentRotation = Mathf.Clamp(_currentRotation + rotationRate, -160, 160);
-        }
-        else
-        {
-            _resetCount += Time.deltaTime;
-            if (_resetCount >= 0.6f && Mathf.Abs(_currentRotation) < 20)
+            float rotationRate = _gyro.rotationRate.z;
+
+            if (Mathf.Abs(rotationRate) >= 0.05f)
             {
-                _currentRotation = 0;
-            }
-        }
-
-        //print(_currentRotation);
-
-        if (accelerating && _acceleration <= _speed && !walled)
-        {
-            ChangeAcceleration(0.75f);
-        }
-        else if (breaking)
-        {
-            _anim.SetBool("Breaking", true);
-            if (_acceleration > 0)
-            {
-                ChangeAcceleration(-2);
+                _resetCount = 0;
+                _currentRotation = Mathf.Clamp(_currentRotation + rotationRate, -160, 160);
             }
             else
             {
-                ChangeAcceleration(-0.5f, _speed * -0.5f);
+                _resetCount += Time.deltaTime;
+                if (_resetCount >= 0.6f && Mathf.Abs(_currentRotation) < 20)
+                {
+                    _currentRotation = 0;
+                }
             }
-        }
-        else if (boosting && _boost > 0 && !walled)
-        {
-            _anim.SetBool("Turbo", true);
-            ChangeBoost(-Time.deltaTime * _boostDepletionRate);
-            ChangeAcceleration(2.5f, 0, _speed * 1.5f);
-        }
-        else
-        {
-            _anim.SetBool("Turbo", false);
-            _anim.SetBool("Breaking", false);
-            if (_acceleration > 0)
+
+            if (accelerating && _acceleration <= _speed)
             {
-                ChangeAcceleration(-0.5f);
+                ChangeAcceleration(0.75f);
             }
-            else if (_acceleration < 0)
+            else if (breaking)
             {
-                ChangeAcceleration(0.5f, _speed * -0.5f);
+                _anim.SetBool("Breaking", true);
+                if (_acceleration > 0)
+                {
+                    ChangeAcceleration(-2);
+                }
+                else
+                {
+                    ChangeAcceleration(-0.5f, _speed * -0.5f);
+                }
             }
+            else if (boosting && _boost > 0)
+            {
+                _anim.SetBool("Turbo", true);
+                ChangeBoost(-Time.deltaTime * _boostDepletionRate);
+                ChangeAcceleration(2.5f, 0, _speed * 1.5f);
+            }
+            else
+            {
+                _anim.SetBool("Turbo", false);
+                _anim.SetBool("Breaking", false);
+                if (_acceleration > 0)
+                {
+                    ChangeAcceleration(-0.5f);
+                }
+                else if (_acceleration < 0)
+                {
+                    ChangeAcceleration(0.5f, _speed * -0.5f);
+                }
+            }
+
+            var dir = transform.forward + transform.right * -_currentRotation * _turnSensibility;
+            dir.Normalize();
+
+            AddForce(dir);
+
+            Move();
         }
-
-        //print(_acceleration);
-
-        var dir = transform.forward + transform.right * -_currentRotation * _turnSensibility;
-        dir.Normalize();
-
-        AddForce(dir);
-        
-        Move();
-        //Gravity();
     }
 
     public void ChangeBoost(float amount)

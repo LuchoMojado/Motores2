@@ -14,7 +14,35 @@ public abstract class SteeringAgent : MonoBehaviour
 
     protected virtual void Move()
     {
-        transform.position += _velocity * Time.deltaTime * _acceleration;
+        bool walledFront = CheckCollision(out bool walledBack);
+
+        if (walledFront)
+        {
+            if (_acceleration > 0)
+            {
+                _acceleration = 0;
+            }
+        }
+        else if (walledBack)
+        {
+            if (_acceleration < 0)
+            {
+                _acceleration = 0;
+            }
+        }
+
+        if (GroundedCheck(out RaycastHit rayHit))
+        {
+            if (rayHit.collider.gameObject.layer == 13)
+            {
+                transform.position += _velocity * Time.deltaTime * _acceleration * 0.6f;
+            }
+            else
+            {
+                transform.position += _velocity * Time.deltaTime * _acceleration;
+            }
+        }
+
         if (_acceleration != 0) 
             transform.forward = _velocity;
     }
@@ -31,20 +59,25 @@ public abstract class SteeringAgent : MonoBehaviour
         return steering;
     }
 
-    protected bool ObstacleAvoidance()
+    protected bool CheckCollision(out bool wallBack)
     {
-        bool lRaycast = Physics.Raycast(transform.position - transform.right * 0.5f, transform.forward, _viewRange, _obstacleLM);
-        bool rRaycast = Physics.Raycast(transform.position + transform.right * 0.5f, transform.forward, _viewRange, _obstacleLM);
+        bool lRaycast = Physics.Raycast(transform.position - transform.right * 0.4f, transform.forward, 2.5f, _obstacleLM);
+        bool rRaycast = Physics.Raycast(transform.position + transform.right * 0.4f, transform.forward, 2.5f, _obstacleLM);
+        bool lBackRaycast = Physics.Raycast(transform.position - transform.right * 0.4f, transform.forward, 2.5f, _obstacleLM);
+        bool rBackRaycast = Physics.Raycast(transform.position + transform.right * 0.4f, transform.forward, 2.5f, _obstacleLM);
 
-        if (lRaycast)
+        if (lRaycast || rRaycast)
         {
+            wallBack = false;
             return true;
         }
-        else if (rRaycast)
+        else if(lBackRaycast || rBackRaycast)
         {
-            return true;
+            wallBack = true;
+            return false;
         }
 
+        wallBack = false;
         return false;
     }
 
@@ -99,11 +132,16 @@ public abstract class SteeringAgent : MonoBehaviour
         _acceleration = Mathf.Clamp(_acceleration + Time.deltaTime * _accChangeRate * multiplier, min, max);
     }
 
-    public void Gravity()
+    public bool GroundedCheck()
     {
-        if (!Physics.Raycast(transform.position, -transform.up, out RaycastHit ray, 0.5f))
-        {
-            transform.position += -transform.up * Time.deltaTime * 0.5f;
-        }
+        return Physics.Raycast(transform.position, -transform.up, 1);
+    }
+
+    public bool GroundedCheck(out RaycastHit hit)
+    {
+        bool grounded = Physics.Raycast(transform.position, -transform.up, out RaycastHit rayhit, 1);
+
+        hit = rayhit;
+        return grounded;
     }
 }

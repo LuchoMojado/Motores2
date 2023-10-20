@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1923,22 +1923,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd69246c4b1f1c1438bb4515806f21c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 13
-  _maxForce: 100
+  _maxSpeed: 12
+  _maxForce: 20
   _speed: 2
   _accChangeRate: 0.5
   _breakStr: 0.9
-  _viewRange: 1
+  _viewRange: 2.5
   _obstacleLM:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 3072
   cAndT: {fileID: 0}
-  _turnSensibility: 0.0006
-  _boostDepletionRate: 0
-  _maxBoost: 0
+  _turnSensibility: 0.0007
+  _boostDepletionRate: 5
+  _maxBoost: 50
+  _anim: {fileID: 1993332480}
   accelerating: 0
   boosting: 0
   breaking: 0
+--- !u!95 &1993332480
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447506314}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c21f9ca5ecf3e8c4f993e4dcdb93aaa0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &543450651878082003
 Transform:
   m_ObjectHideFlags: 0

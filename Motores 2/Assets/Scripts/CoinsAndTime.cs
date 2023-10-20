@@ -19,12 +19,13 @@ public class CoinsAndTime : MonoBehaviour
     public Button losePlayAgain;
     public TextMeshProUGUI WinRecordT;
     public TextMeshProUGUI WinTimeT;
+    public bool paused = false;
 
     private void Awake()
     {
         Json.LoadGame();
     }
-    // Update is called once per frame
+    
     void Update()
     {
         actualTime += Time.deltaTime;
@@ -70,12 +71,14 @@ public class CoinsAndTime : MonoBehaviour
     }
     public void PauseS()
     {
+        paused = true;
         Time.timeScale = 0;
         uiGame.gameObject.SetActive(false);
         pause.gameObject.SetActive(true);
     }
     public void UnPauseS()
     {
+        paused = false;
         Time.timeScale = 1;
         uiGame.gameObject.SetActive(true);
         pause.gameObject.SetActive(false);

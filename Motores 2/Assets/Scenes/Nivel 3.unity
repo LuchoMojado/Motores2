@@ -2132,6 +2132,10 @@ MonoBehaviour:
   _speed: 2
   _accChangeRate: 0
   _breakStr: 0
+  _viewRange: 0
+  _obstacleLM:
+    serializedVersion: 2
+    m_Bits: 0
   waypoints:
   - {fileID: 1544342380}
   - {fileID: 531912964}
@@ -2188,13 +2192,38 @@ MonoBehaviour:
   _speed: 2
   _accChangeRate: 0.5
   _breakStr: 0.9
+  _viewRange: 0
+  _obstacleLM:
+    serializedVersion: 2
+    m_Bits: 0
   cAndT: {fileID: 1037718487}
   _turnSensibility: 0.00045
   _boostDepletionRate: 2
   _maxBoost: 100
+  _anim: {fileID: 447506320}
   accelerating: 0
   boosting: 0
   breaking: 0
+--- !u!95 &447506320
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447506314}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c21f9ca5ecf3e8c4f993e4dcdb93aaa0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &450218278
 PrefabInstance:
   m_ObjectHideFlags: 0

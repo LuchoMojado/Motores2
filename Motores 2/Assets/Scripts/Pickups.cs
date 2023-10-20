@@ -13,6 +13,15 @@ public class Pickups : MonoBehaviour
     public PickupType type;
     [SerializeField] float _value;
 
+    Renderer _renderer;
+    Collider _collider;
+
+    private void Awake()
+    {
+        _collider = GetComponent<Collider>();
+        _renderer = GetComponent<Renderer>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == 7)
@@ -37,10 +46,12 @@ public class Pickups : MonoBehaviour
 
     IEnumerator Reactivate()
     {
-        gameObject.SetActive(false);
+        _collider.enabled = false;
+        _renderer.enabled = false;
 
         yield return new WaitForSeconds(30f);
 
-        gameObject.SetActive(true);
+        _collider.enabled = true;
+        _renderer.enabled = true;
     }
 }
