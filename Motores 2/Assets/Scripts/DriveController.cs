@@ -33,7 +33,7 @@ public class DriveController : SteeringAgent
             if (Mathf.Abs(rotationRate) >= 0.05f)
             {
                 _resetCount = 0;
-                _currentRotation = Mathf.Clamp(_currentRotation + rotationRate, -160, 160);
+                _currentRotation = Mathf.Clamp(_currentRotation + rotationRate * Time.deltaTime, -160, 160);
             }
             else
             {
