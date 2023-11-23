@@ -885,6 +885,7 @@ MonoBehaviour:
     _lastTime: 0
     cars: []
     madeTutorial: 0
+    timeToEnergy: 0
 --- !u!4 &95023687
 Transform:
   m_ObjectHideFlags: 0
@@ -13382,7 +13383,7 @@ MonoBehaviour:
     m_Bits: 3072
   _boostBar: {fileID: 402669699}
   cAndT: {fileID: 1183045447}
-  _turnSensibility: 0.0007
+  _turnSensibility: 0.15
   _boostDepletionRate: 5
   _maxBoost: 50
   _anim: {fileID: 447506321}
