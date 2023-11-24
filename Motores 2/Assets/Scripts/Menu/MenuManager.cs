@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
     public Image optionsMenu;
     public Image shopMenu;
     public Image deleteMenu;
+    public Image playMenu;
 
     private void Awake()
     {
@@ -18,6 +19,7 @@ public class MenuManager : MonoBehaviour
 
     public void MainMenu()
     {
+        playMenu.gameObject.SetActive(false);
         mainMenu.gameObject.SetActive(true);
         tutorialMenu.gameObject.SetActive(false);
         optionsMenu.gameObject.SetActive(false);
@@ -26,6 +28,7 @@ public class MenuManager : MonoBehaviour
     }
     public void TutorialMenu()
     {
+        playMenu.gameObject.SetActive(false);
         mainMenu.gameObject.SetActive(false);
         tutorialMenu.gameObject.SetActive(true);
         optionsMenu.gameObject.SetActive(false);
@@ -34,6 +37,7 @@ public class MenuManager : MonoBehaviour
     }
     public void OptionsMenu()
     {
+        playMenu.gameObject.SetActive(false);
         mainMenu.gameObject.SetActive(false);
         tutorialMenu.gameObject.SetActive(false);
         optionsMenu.gameObject.SetActive(true);
@@ -42,6 +46,7 @@ public class MenuManager : MonoBehaviour
     }
     public void ShopMenu()
     {
+        playMenu.gameObject.SetActive(false);
         mainMenu.gameObject.SetActive(false);
         tutorialMenu.gameObject.SetActive(false);
         optionsMenu.gameObject.SetActive(false);
@@ -50,10 +55,20 @@ public class MenuManager : MonoBehaviour
     }
     public void DeleteMenu()
     {
+        playMenu.gameObject.SetActive(false);
         mainMenu.gameObject.SetActive(false);
         tutorialMenu.gameObject.SetActive(false);
         optionsMenu.gameObject.SetActive(false);
         shopMenu.gameObject.SetActive(false);
         deleteMenu.gameObject.SetActive(true);
+    }
+    public void PlayMenu()
+    {
+        playMenu.gameObject.SetActive(true);
+        mainMenu.gameObject.SetActive(false);
+        tutorialMenu.gameObject.SetActive(false);
+        optionsMenu.gameObject.SetActive(false);
+        shopMenu.gameObject.SetActive(false);
+        deleteMenu.gameObject.SetActive(false);
     }
 }
