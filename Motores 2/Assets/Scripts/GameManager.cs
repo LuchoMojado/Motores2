@@ -133,4 +133,9 @@ public class GameManager : MonoBehaviour
         //AGREGAR EL AUTO A LA LISTA
         //Json.saveData.cars.Add();
     }
+
+    public void ChooseYourCar()
+    {
+
+    }
 }
