@@ -21,7 +21,6 @@ public class DriveController : SteeringAgent
     
     private void Awake()
     {
-        cAndT = GetComponent<CoinsAndTime>();
         _gyro = Input.gyro;
         _gyro.enabled = true;
     }
