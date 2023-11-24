@@ -4905,7 +4905,7 @@ MonoBehaviour:
     m_Bits: 3072
   _boostBar: {fileID: 1438616814}
   cAndT: {fileID: 338949098}
-  _turnSensibility: 0.15
+  _turnSensibility: 0.3
   _boostDepletionRate: 5
   _maxBoost: 50
   _anim: {fileID: 1993332480}
