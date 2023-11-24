@@ -5,7 +5,7 @@ using UnityEngine.Advertisements;
 
 public class AdManager : MonoBehaviour, IUnityAdsListener
 {
-    string _gameID = "5483651", _adID = "Rewarded_Android";
+    string _gameID = "5484290", _adID = "Rewarded_Android";
 
     [SerializeField] CustomJsonSaveSystem _json;
     [SerializeField] GameObject _addEnergyButton;
