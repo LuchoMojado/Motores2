@@ -33,12 +33,12 @@ public class GameManager : MonoBehaviour
         Json.LoadGame();
         recordT.text = "Best Time: " + Json.saveData._record.ToString();
         lastTimeT.text = "Last Time: " + Json.saveData._lastTime.ToString();
+        Json.saveData.cars.Add(ComonPreffab);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Json.saveData.cars.Add(ComonPreffab);
         actualCars = Json.saveData.cars;
         actualCoins = Json.saveData._coins;
         actualEnergy = Json.saveData._energy;
