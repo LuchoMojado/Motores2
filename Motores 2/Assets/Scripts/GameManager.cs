@@ -21,6 +21,11 @@ public class GameManager : MonoBehaviour
     public List<Sprite> posibleEnergys = new List<Sprite>();
     public Button Bplay;
     float restoreEnergy = 0;
+    public Button BNormal;
+    public Button BEpico;
+    public DriveController EpicPreffab;
+    public DriveController NormalPreffab;
+    public DriveController ComonPreffab;
 
     private void Start()
     {
@@ -37,6 +42,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Json.saveData.cars.Add(ComonPreffab);
         actualCars = Json.saveData.cars;
         actualCoins = Json.saveData._coins;
         actualEnergy = Json.saveData._energy;
@@ -117,10 +123,12 @@ public class GameManager : MonoBehaviour
         {
             priceT.text = "GANASTE UN EPICO";
             //Hacer varios prefabs de autos y cuando seleccione este ponerle el valor correspondiente
+            Json.saveData.cars.Add(EpicPreffab);
         }
         if (newCar >= 1 && newCar <= 3)
         {
             priceT.text = "Ganaste Un NORMAL";
+            Json.saveData.cars.Add(EpicPreffab);
             //Hacer varios prefabs de autos y cuando seleccione este ponerle el valor correspondiente
         }
         if (newCar >= 4 && newCar <= 10)
@@ -134,8 +142,25 @@ public class GameManager : MonoBehaviour
         //Json.saveData.cars.Add();
     }
 
-    public void ChooseYourCar()
+    public void ChooseYourCar(int presed)
     {
+        if (presed == 0)
+            Json.saveData.selectedCar = 0;
+        if (presed == 1)
+            Json.saveData.selectedCar = 1;
+        if (presed == 2)
+            Json.saveData.selectedCar = 2;
+    }
 
+    public void HaveCars()
+    {
+        foreach(var item in actualCars)
+        {
+            if (item.Class == "Normal")
+                BNormal.gameObject.SetActive(true);
+            if (item.Class == "Epic")
+                BEpico.gameObject.SetActive(true);
+        }
+        
     }
 }

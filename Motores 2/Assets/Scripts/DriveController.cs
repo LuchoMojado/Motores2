@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class DriveController : SteeringAgent
 {
+    public string Class;
     Gyroscope _gyro;
 
     [SerializeField] Image _boostBar;
