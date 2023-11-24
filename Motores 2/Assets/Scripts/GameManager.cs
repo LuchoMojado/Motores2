@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
         lastTimeT.text = "Last Time: " + Json.saveData._lastTime.ToString();
         if(Json.saveData.madeTutorial == false)
         {
-            change.NewScene("Tutorial");
+            //change.NewScene("Tutorial");
         }
     }
 
@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void RestEnergy()
+    public void SubtractEnergy()
     {
         Json.saveData._energy -= 1;
     }
@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
 
     public void GainCoins()
     {
-        Json.GainCoinsAndEnergy();
+        Json.GainCoins(1);
     }
 
     public void SelectCar()

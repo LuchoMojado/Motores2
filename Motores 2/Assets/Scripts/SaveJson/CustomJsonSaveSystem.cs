@@ -26,7 +26,11 @@ public class CustomJsonSaveSystem : MonoBehaviour
     {
         //if (Input.GetKeyDown(KeyCode.S)) SaveGame();
         //if (Input.GetKeyDown(KeyCode.L)) LoadGame();
-        if (Input.GetKeyDown(KeyCode.J)) GainCoinsAndEnergy();
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            GainCoins(90);
+            GainEnergy(5);
+        }
     }
 
     public void SaveGame()
@@ -47,9 +51,17 @@ public class CustomJsonSaveSystem : MonoBehaviour
         JsonUtility.FromJsonOverwrite(json, saveData);
     }
 
-    public void GainCoinsAndEnergy()
+    public void GainCoins(int amount)
     {
-        saveData._coins = 90;
-        saveData._energy = 5;
+        saveData._coins += amount;
+    }
+
+    public void GainEnergy(int amount)
+    {
+        saveData._energy += amount;
+        if (saveData._energy > 5)
+        {
+            saveData._energy = 5;
+        }
     }
 }
