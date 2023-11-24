@@ -23,6 +23,7 @@ public class DriveController : SteeringAgent
     {
         _gyro = Input.gyro;
         _gyro.enabled = true;
+        //cAndT = (CoinsAndTime)GameObject.FindGameObjectWithTag("CoinsAndTime");
     }
 
     private void Update()
