@@ -33,10 +33,6 @@ public class GameManager : MonoBehaviour
         Json.LoadGame();
         recordT.text = "Best Time: " + Json.saveData._record.ToString();
         lastTimeT.text = "Last Time: " + Json.saveData._lastTime.ToString();
-        if(Json.saveData.madeTutorial == false)
-        {
-            //change.NewScene("Tutorial");
-        }
     }
 
     // Update is called once per frame
@@ -162,5 +158,12 @@ public class GameManager : MonoBehaviour
                 BEpico.gameObject.SetActive(true);
         }
         
+    }
+    public void CheckTutorial()
+    {
+        if (!Json.saveData.madeTutorial)
+        {
+            change.NewScene("Tutorial");
+        }
     }
 }
