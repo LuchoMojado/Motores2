@@ -79,6 +79,7 @@ public class DriveController : SteeringAgent
                 else if (_acceleration < 0)
                 {
                     ChangeAcceleration(0.5f, _speed * -0.5f);
+                    _currentRotation *= -1;
                 }
             }
 
