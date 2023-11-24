@@ -25,6 +25,18 @@ public class CoinsAndTime : MonoBehaviour
     {
         Json.LoadGame();
         Time.timeScale = 1;
+        if(Json.saveData.selectedCar == 0)
+        {
+            //Prender primer auto
+        }
+        if (Json.saveData.selectedCar == 1)
+        {
+            //Prender segundo auto
+        }
+        if (Json.saveData.selectedCar == 2)
+        {
+            //Prender tercero auto
+        }
     }
 
     void Update()
