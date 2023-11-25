@@ -120,11 +120,13 @@ public class GameManager : MonoBehaviour
             priceT.text = "GANASTE UN EPICO";
             //Hacer varios prefabs de autos y cuando seleccione este ponerle el valor correspondiente
             Json.saveData.cars.Add(EpicPreffab);
+            HaveCars();
         }
         if (newCar >= 1 && newCar <= 3)
         {
             priceT.text = "Ganaste Un NORMAL";
-            Json.saveData.cars.Add(EpicPreffab);
+            Json.saveData.cars.Add(NormalPreffab);
+            HaveCars();
             //Hacer varios prefabs de autos y cuando seleccione este ponerle el valor correspondiente
         }
         if (newCar >= 4 && newCar <= 10)
