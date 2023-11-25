@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 //using System;
 using TMPro;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,6 +28,12 @@ public class GameManager : MonoBehaviour
     public DriveController NormalPreffab;
     public DriveController ComonPreffab;
 
+    [SerializeField] string _titleNotif = "Ya te fuiste mucho volve";
+    [SerializeField] string _textNotif = "HORA DE ROMPER RECORDS!!!";
+    [SerializeField] IconSelector _small = IconSelector.icon_reminder;
+    [SerializeField] IconSelector _big = IconSelector.icon_reminderbig;
+    TimeSpan timer;
+    int id;
     private void Start()
     {
         Json.SaveGame();
@@ -39,6 +46,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        id = NotificationManager.Instance.DisplayNotification(_titleNotif, _textNotif, _small, _big, DateTime.Now.AddSeconds(5));
         actualCars = Json.saveData.cars;
         actualCoins = Json.saveData._coins;
         actualEnergy = Json.saveData._energy;
@@ -68,6 +76,7 @@ public class GameManager : MonoBehaviour
                 Json.saveData._energy += 1;
                 restoreEnergy = 0;
             }
+            NotificationManager.Instance.CancelNotification(id);
         }
     }
 
