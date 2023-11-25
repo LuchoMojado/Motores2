@@ -27,9 +27,10 @@ public class GameManager : MonoBehaviour
     public DriveController EpicPreffab;
     public DriveController NormalPreffab;
     public DriveController ComonPreffab;
-
-    [SerializeField] string _titleNotif = "Ya te fuiste mucho volve";
-    [SerializeField] string _textNotif = "HORA DE ROMPER RECORDS!!!";
+    [SerializeField] float _timeToRecharge = 300f;
+    DateTime _nextStaminaTime;
+    [SerializeField] string _titleNotif = "Es momento de correr";
+    [SerializeField] string _textNotif = "Ya tenes toda tu energia, HORA DE ROMPER RECORDS!!!";
     [SerializeField] IconSelector _small = IconSelector.icon_reminder;
     [SerializeField] IconSelector _big = IconSelector.icon_reminderbig;
     TimeSpan timer;
@@ -46,7 +47,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        id = NotificationManager.Instance.DisplayNotification(_titleNotif, _textNotif, _small, _big, DateTime.Now.AddSeconds(5));
+        timer = _nextStaminaTime - DateTime.Now;
+        id = NotificationManager.Instance.DisplayNotification(_titleNotif, _textNotif, _small, _big, AddDuration(DateTime.Now, ((5 - actualEnergy + 1) * 300) + 1 + (float)timer.TotalSeconds));
         actualCars = Json.saveData.cars;
         actualCoins = Json.saveData._coins;
         actualEnergy = Json.saveData._energy;
@@ -69,8 +71,11 @@ public class GameManager : MonoBehaviour
         }
         if(actualEnergy <= 4)
         {
+            DateTime nextTime = _nextStaminaTime;
+            timer = _nextStaminaTime - DateTime.Now;
             restoreEnergy += Time.deltaTime;
             restTimeLeft.text = "Add Energy in: " + (int)restoreEnergy + "seg/ 5 mins";
+            nextTime = AddDuration(DateTime.Now, _timeToRecharge);
             if (restoreEnergy >= 300)
             {
                 Json.saveData._energy += 1;
@@ -79,6 +84,8 @@ public class GameManager : MonoBehaviour
             NotificationManager.Instance.CancelNotification(id);
         }
     }
+
+    private DateTime AddDuration(DateTime date, float duration) => date.AddSeconds(duration);
 
     public void SubtractEnergy()
     {
@@ -176,5 +183,14 @@ public class GameManager : MonoBehaviour
         {
             change.NewScene("Tutorial");
         }
+    }
+
+    DateTime StringToDateTime(string date)
+    {
+        if (string.IsNullOrEmpty(date))
+            return DateTime.Now; //El mismo horario presente en tu dispositivo.
+                                 //return DateTime.UtcNow; El horario universal, para nuestro caso seria Utc-3.
+        else
+            return DateTime.Parse(date);
     }
 }
