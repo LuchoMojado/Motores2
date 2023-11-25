@@ -911,6 +911,10 @@ MonoBehaviour:
   WinRecordT: {fileID: 1384486250}
   WinTimeT: {fileID: 1563173697}
   paused: 0
+  sceneCars: []
+  _audioSlider: {fileID: 0}
+  _myAM: {fileID: 24100000, guid: b5567e439ac016344b63bfd2816b91eb, type: 2}
+  carIndex: 0
 --- !u!4 &338949099
 Transform:
   m_ObjectHideFlags: 0
@@ -6321,7 +6325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d8d85e98e7654645b22ecae77ffe8c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _car: {fileID: 1993332479}
+  cAndT: {fileID: 338949098}
   _type: 0
 --- !u!114 &640421043
 MonoBehaviour:
@@ -12304,6 +12308,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140896324}
   m_CullTransparentMesh: 1
+--- !u!1 &1169799395
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1169799397}
+  - component: {fileID: 1169799396}
+  m_Layer: 0
+  m_Name: finishtrucho
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1169799396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169799395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3b4834150708914f8fcddcff17a953f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Finish: {fileID: 0}
+--- !u!4 &1169799397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169799395}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 357.61835, y: 348.40472, z: 707.52466}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1183579761
 GameObject:
   m_ObjectHideFlags: 0
@@ -13663,7 +13712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d8d85e98e7654645b22ecae77ffe8c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _car: {fileID: 1993332479}
+  cAndT: {fileID: 338949098}
   _type: 2
 --- !u!114 &1576308956
 MonoBehaviour:
@@ -14103,7 +14152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d8d85e98e7654645b22ecae77ffe8c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _car: {fileID: 1993332479}
+  cAndT: {fileID: 338949098}
   _type: 1
 --- !u!114 &1721050625
 MonoBehaviour:
@@ -14558,6 +14607,7 @@ MonoBehaviour:
     cars: []
     madeTutorial: 1
     timeToEnergy: 0
+    selectedCar: 0
 --- !u!4 &1881641971
 Transform:
   m_ObjectHideFlags: 0
@@ -14975,9 +15025,10 @@ MonoBehaviour:
   _obstacleLM:
     serializedVersion: 2
     m_Bits: 3072
+  Class: 
   _boostBar: {fileID: 1438616814}
+  _sensibilitySlider: {fileID: 0}
   cAndT: {fileID: 338949098}
-  _turnSensibility: 0.3
   _boostDepletionRate: 5
   _maxBoost: 50
   _anim: {fileID: 1993332480}
