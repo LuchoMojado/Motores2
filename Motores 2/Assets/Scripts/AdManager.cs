@@ -22,6 +22,10 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
         {
             _addEnergyButton.SetActive(true);
         }
+        else
+        {
+            _addEnergyButton.SetActive(false);
+        }
     }
 
     public void ShowAd()
