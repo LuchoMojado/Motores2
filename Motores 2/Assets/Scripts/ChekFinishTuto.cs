@@ -13,6 +13,7 @@ public class ChekFinishTuto : MonoBehaviour
     {
         _playerVueltas = 0;
         canPass = false;
+        CheckFinish.finish.startRace = true;
         //Finish.SetActive(false);
     }
     private void OnTriggerEnter(Collider other)

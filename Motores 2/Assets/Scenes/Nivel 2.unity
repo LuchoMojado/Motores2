@@ -13004,8 +13004,8 @@ MonoBehaviour:
     m_Bits: 3072
   Class: 
   _boostBar: {fileID: 402669699}
+  _sensibilitySlider: {fileID: 0}
   cAndT: {fileID: 1183045447}
-  _turnSensibility: 0.3
   _boostDepletionRate: 5
   _maxBoost: 50
   _anim: {fileID: 447506321}
@@ -13332,7 +13332,6 @@ MonoBehaviour:
   _iaVueltas: 0
   canPass: 0
   countdown: {fileID: 1926387901223082050}
-  ui: {fileID: 1820121961}
   startRace: 0
 --- !u!1001 &464819035
 PrefabInstance:
@@ -15775,7 +15774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d8d85e98e7654645b22ecae77ffe8c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _car: {fileID: 447506319}
+  cAndT: {fileID: 0}
   _type: 1
 --- !u!114 &693562036
 MonoBehaviour:
@@ -15943,8 +15942,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 1693037070}
   m_HandleRect: {fileID: 878605642}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -80
+  m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -19835,7 +19834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d8d85e98e7654645b22ecae77ffe8c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _car: {fileID: 447506319}
+  cAndT: {fileID: 0}
   _type: 2
 --- !u!1001 &1141568342
 PrefabInstance:
@@ -20355,6 +20354,10 @@ MonoBehaviour:
   WinRecordT: {fileID: 1835361832}
   WinTimeT: {fileID: 1939901756}
   paused: 0
+  sceneCars: []
+  _audioSlider: {fileID: 695142907}
+  _myAM: {fileID: 24100000, guid: b5567e439ac016344b63bfd2816b91eb, type: 2}
+  carIndex: 0
 --- !u!4 &1183045448
 Transform:
   m_ObjectHideFlags: 0
@@ -22626,7 +22629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d8d85e98e7654645b22ecae77ffe8c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _car: {fileID: 447506319}
+  cAndT: {fileID: 0}
   _type: 0
 --- !u!1 &1417218994
 GameObject:
@@ -23444,10 +23447,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 79990112}
   m_HandleRect: {fileID: 704219236}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: 0.15
+  m_MaxValue: 0.4
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.3
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -25225,7 +25228,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Nivel 1
+          m_StringArgument: Nivel 2
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1628177530
