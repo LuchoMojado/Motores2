@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 //using System;
 using TMPro;
+using UnityEngine.Audio;
 
 public class CoinsAndTime : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class CoinsAndTime : MonoBehaviour
     public TextMeshProUGUI WinTimeT;
     public bool paused = false;
     public List<DriveController> sceneCars = new List<DriveController>();
+    [SerializeField] Slider _audioSlider;
+    [SerializeField] AudioMixer _myAM;
     public int carIndex;
 
     private void Start()
@@ -49,6 +52,8 @@ public class CoinsAndTime : MonoBehaviour
 
     void Update()
     {
+        _myAM.SetFloat("Master", _audioSlider.value);
+
         actualTime += Time.deltaTime;
         int firstNumber = Mathf.FloorToInt(actualTime);
         int decimales = Mathf.FloorToInt((actualTime - firstNumber) * 100);
@@ -56,7 +61,6 @@ public class CoinsAndTime : MonoBehaviour
         timeT.text = newTime;
 
         coinsT.text = Json.saveData._coins.ToString();
-        
     }
 
     public void Win()
