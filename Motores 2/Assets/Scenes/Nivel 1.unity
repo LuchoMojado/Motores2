@@ -553,6 +553,10 @@ PrefabInstance:
       propertyPath: _boostBar
       value: 
       objectReference: {fileID: 402669699}
+    - target: {fileID: 8226806634312607622, guid: 5582b7b1008c81a4b962e2eab196fde2, type: 3}
+      propertyPath: _sensibilitySlider
+      value: 
+      objectReference: {fileID: 883835480}
     - target: {fileID: 8476271988813951263, guid: 5582b7b1008c81a4b962e2eab196fde2, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -9336,6 +9340,10 @@ PrefabInstance:
       propertyPath: _boostBar
       value: 
       objectReference: {fileID: 402669699}
+    - target: {fileID: 8226806634312607622, guid: 56311575a79e045448bca664249e06e8, type: 3}
+      propertyPath: _sensibilitySlider
+      value: 
+      objectReference: {fileID: 883835480}
     - target: {fileID: 8476271988813951263, guid: 56311575a79e045448bca664249e06e8, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -10196,6 +10204,10 @@ PrefabInstance:
       propertyPath: _boostBar
       value: 
       objectReference: {fileID: 402669699}
+    - target: {fileID: 8226806634312607622, guid: e7e5a4f84ace8a044bd2cf87794113ad, type: 3}
+      propertyPath: _sensibilitySlider
+      value: 
+      objectReference: {fileID: 883835480}
     - target: {fileID: 8476271988813951263, guid: e7e5a4f84ace8a044bd2cf87794113ad, type: 3}
       propertyPath: m_RootOrder
       value: 0
