@@ -20355,8 +20355,8 @@ MonoBehaviour:
   WinTimeT: {fileID: 1939901756}
   paused: 0
   sceneCars: []
-  _audioSlider: {fileID: 0}
-  _myAM: {fileID: 0}
+  _audioSlider: {fileID: 695142907}
+  _myAM: {fileID: 24100000, guid: b5567e439ac016344b63bfd2816b91eb, type: 2}
   carIndex: 0
 --- !u!4 &1183045448
 Transform:
