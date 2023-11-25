@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
             timer = _nextStaminaTime - DateTime.Now;
             restoreEnergy += Time.deltaTime;
             restTimeLeft.text = "Add Energy in: " + (int)restoreEnergy + "seg/ 5 mins";
-            nextTime = AddDuration(DateTime.Now, _timeToRecharge);
+            //nextTime = AddDuration(DateTime.Now, _timeToRecharge);
             if (restoreEnergy >= 300)
             {
                 Json.saveData._energy += 1;
@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private DateTime AddDuration(DateTime date, float duration) => date.AddSeconds(duration);
+    //private DateTime AddDuration(DateTime date, float duration) => date.AddSeconds(duration);
 
     public void SubtractEnergy()
     {
