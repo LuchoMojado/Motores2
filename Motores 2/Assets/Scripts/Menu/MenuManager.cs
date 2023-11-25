@@ -11,6 +11,8 @@ public class MenuManager : MonoBehaviour
     public Image shopMenu;
     public Image deleteMenu;
     public Image playMenu;
+    public AudioSource myAs;
+    public AudioClip minecraft;
 
     private void Awake()
     {
@@ -70,5 +72,9 @@ public class MenuManager : MonoBehaviour
         optionsMenu.gameObject.SetActive(false);
         shopMenu.gameObject.SetActive(false);
         deleteMenu.gameObject.SetActive(false);
+    }
+    public void PlayAudio()
+    {
+        myAs.PlayOneShot(minecraft);
     }
 }
