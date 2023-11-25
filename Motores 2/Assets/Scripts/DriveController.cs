@@ -28,7 +28,7 @@ public class DriveController : SteeringAgent
 
     private void Update()
     {
-        if (!cAndT.paused)
+        if (!cAndT.paused && CheckFinish.finish.startRace)
         {
             float rotationRate = _gyro.rotationRate.z;
 

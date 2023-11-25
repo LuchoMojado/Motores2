@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FillBoost
   - CoinsAndTime
+  - xd
   layers:
   - Default
   - TransparentFX

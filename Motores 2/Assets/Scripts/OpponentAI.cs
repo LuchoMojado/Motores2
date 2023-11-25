@@ -47,7 +47,7 @@ public class OpponentAI : SteeringAgent
             }
         }
 
-        Move();
+        if (CheckFinish.finish.startRace) Move();
     }
 }
 //<>new Vector3(waypoints[i].position.x, transform.position.y, waypoints[i].position.z)
