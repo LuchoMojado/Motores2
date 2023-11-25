@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
         {
             newCar = Random.Range(0, 10);
         }while(newCar == )*/
-        newCar = Random.Range(0, 10);
+        newCar = UnityEngine.Random.Range(0, 10);
         if (newCar == 0)
         {
             priceT.text = "GANASTE UN EPICO";
