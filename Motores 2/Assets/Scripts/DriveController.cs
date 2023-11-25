@@ -9,10 +9,12 @@ public class DriveController : SteeringAgent
     Gyroscope _gyro;
 
     [SerializeField] Image _boostBar;
+    [SerializeField] Slider _sensibilitySlider;
 
     public CoinsAndTime cAndT;
 
-    [SerializeField] float _turnSensibility, _boostDepletionRate, _maxBoost;
+    [Range(0.15f, 0.4f)] float _turnSensibility;
+    [SerializeField] float _boostDepletionRate, _maxBoost;
     [SerializeField] Animator _anim;
 
     float _currentRotation, _resetCount = 0, _boost = 0;
@@ -28,6 +30,8 @@ public class DriveController : SteeringAgent
 
     private void Update()
     {
+        _turnSensibility = _sensibilitySlider.value;
+
         if (!cAndT.paused && CheckFinish.finish.startRace)
         {
             float rotationRate = _gyro.rotationRate.z;
