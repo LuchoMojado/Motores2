@@ -5,7 +5,13 @@ using UnityEngine.EventSystems;
 
 public class DriveButtons : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    [SerializeField] DriveController _car;
+    DriveController _car;
+    [SerializeField] CoinsAndTime cAndT;
+
+    private void Start()
+    {
+        _car = cAndT.sceneCars[cAndT.carIndex];
+    }
 
     public enum ButtonType
     {

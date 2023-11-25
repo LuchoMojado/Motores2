@@ -21,6 +21,7 @@ public class CoinsAndTime : MonoBehaviour
     public TextMeshProUGUI WinTimeT;
     public bool paused = false;
     public List<DriveController> sceneCars = new List<DriveController>();
+    public int carIndex;
 
     private void Start()
     {
@@ -30,16 +31,19 @@ public class CoinsAndTime : MonoBehaviour
         {
             //Prender primer auto
             sceneCars[0].gameObject.SetActive(true);
+            carIndex = 0;
         }
         else if (Json.saveData.selectedCar == 1)
         {
             //Prender segundo auto
             sceneCars[1].gameObject.SetActive(true);
+            carIndex = 1;
         }
         else if (Json.saveData.selectedCar == 2)
         {
             //Prender tercero auto
             sceneCars[2].gameObject.SetActive(true);
+            carIndex = 2;
         }
     }
 
